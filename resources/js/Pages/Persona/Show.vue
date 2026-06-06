@@ -1,10 +1,13 @@
 <script setup>
-import { Link } from '@inertiajs/vue3'
+import { Link, usePage } from '@inertiajs/vue3'
 import AppLayout from '@/Layouts/AppLayout.vue'
 
 const props = defineProps({
     persona: Object,
 })
+
+const { appUrl } = usePage().props
+
 
 function formatDate(date) {
     if (!date) return '—'
@@ -45,7 +48,7 @@ function formatDate(date) {
                         <div class="absolute -bottom-10 left-6">
                             <template v-if="persona.per_foto && persona.per_foto.trim() !== 'img/placeholder.png'">
                                 <img
-                                    :src="`/storage/${persona.per_foto}`"
+                                    :src="`${appUrl}/storage/${persona.per_foto}`"
                                     :alt="persona.per_nom"
                                     class="h-20 w-20 rounded-full object-cover ring-4 ring-white dark:ring-gray-800 shadow-lg"
                                 />

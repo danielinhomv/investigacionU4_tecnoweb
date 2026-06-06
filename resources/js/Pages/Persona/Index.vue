@@ -1,6 +1,6 @@
 <script setup>
 import { ref, watch } from 'vue'
-import { router, Link, Head } from '@inertiajs/vue3'
+import { router, Link, Head, usePage  } from '@inertiajs/vue3'
 import AppLayout from '@/Layouts/AppLayout.vue'
 
 const props = defineProps({
@@ -9,6 +9,7 @@ const props = defineProps({
 })
 
 const search = ref(props.filters?.search ?? '')
+const { appUrl } = usePage().props
 
 watch(search, (value) => {
     router.get(route('personas.index'), { search: value }, {
@@ -88,10 +89,10 @@ function destroy(perCod, nombre) {
                                 >
                                     <td class="px-4 py-3">
                                         <img
-                                            :src="`/storage/${persona.per_foto}`"
+                                            :src="`${appUrl}/storage/${persona.per_foto}`"
                                             :alt="persona.per_nom"
                                             class="h-9 w-9 rounded-full object-cover ring-2 ring-gray-200"
-                                            @error="$event.target.src='/img/placeholder.png'"
+                                            @error="$event.target.src='img/placeholder.png'"
                                         />
                                     </td>
                                     <td class="px-4 py-3 font-mono text-gray-500 dark:text-gray-400">

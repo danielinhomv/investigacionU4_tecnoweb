@@ -1,6 +1,6 @@
 <script setup>
 import { ref, computed } from 'vue'
-import { useForm, Link } from '@inertiajs/vue3'
+import { useForm, Link, usePage  } from '@inertiajs/vue3'
 import AppLayout from '@/Layouts/AppLayout.vue'
 
 const props = defineProps({
@@ -10,6 +10,7 @@ const props = defineProps({
 const isEditing = computed(() => !!props.persona)
 const photoPreview = ref(null)
 const photoInput = ref(null)
+const { appUrl } = usePage().props
 
 const form = useForm({
     per_cod:   props.persona?.per_cod?.trim()   ?? '',
@@ -85,7 +86,7 @@ function submit() {
                         <div class="px-6 py-5 border-b border-gray-100 dark:border-gray-700 flex items-center gap-6">
                             <div class="relative">
                                 <img
-                                    :src="photoPreview ?? (persona ? `/storage/${persona.per_foto}` : '/img/placeholder.png')"
+                                    :src="photoPreview ?? (persona ? `${appUrl}/storage/${persona.per_foto}` :'img/placeholder.png')"
                                     class="h-20 w-20 rounded-full object-cover ring-4 ring-gray-100 dark:ring-gray-700"
                                 />
                                 <button

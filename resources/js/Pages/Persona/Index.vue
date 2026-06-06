@@ -92,7 +92,7 @@ function destroy(perCod, nombre) {
                                             :src="`${appUrl}/storage/${persona.per_foto}`"
                                             :alt="persona.per_nom"
                                             class="h-9 w-9 rounded-full object-cover ring-2 ring-gray-200"
-                                            @error="$event.target.src='img/placeholder.png'"
+                                            @error="$event.target.src=`${appUrl}/img/placeholder.png`"
                                         />
                                     </td>
                                     <td class="px-4 py-3 font-mono text-gray-500 dark:text-gray-400">

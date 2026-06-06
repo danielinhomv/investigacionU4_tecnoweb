@@ -46,7 +46,7 @@ function formatDate(date) {
                     <!-- Banner + foto -->
                     <div class="h-24 bg-gradient-to-r from-indigo-500 to-indigo-700 relative">
                         <div class="absolute -bottom-10 left-6">
-                            <template v-if="persona.per_foto && persona.per_foto.trim() !== 'img/placeholder.png'">
+                            <template v-if="persona.per_foto && persona.per_foto.trim() !== `${appUrl}/img/placeholder.png`">
                                 <img
                                     :src="`${appUrl}/storage/${persona.per_foto}`"
                                     :alt="persona.per_nom"

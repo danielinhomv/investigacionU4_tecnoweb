@@ -86,7 +86,7 @@ function submit() {
                         <div class="px-6 py-5 border-b border-gray-100 dark:border-gray-700 flex items-center gap-6">
                             <div class="relative">
                                 <img
-                                    :src="photoPreview ?? (persona ? `${appUrl}/storage/${persona.per_foto}` :'img/placeholder.png')"
+                                    :src="photoPreview ?? (persona ? `${appUrl}/storage/${persona.per_foto}` :`${appUrl}/img/placeholder.png`)"
                                     class="h-20 w-20 rounded-full object-cover ring-4 ring-gray-100 dark:ring-gray-700"
                                 />
                                 <button

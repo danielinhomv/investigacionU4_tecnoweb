@@ -1,5 +1,5 @@
 <script setup>
-import { ref, watch } from 'vue'
+import { ref, watch, computed } from 'vue'
 import { router, Link, Head, usePage  } from '@inertiajs/vue3'
 import AppLayout from '@/Layouts/AppLayout.vue'
 
@@ -9,7 +9,9 @@ const props = defineProps({
 })
 
 const search = ref(props.filters?.search ?? '')
-const { appUrl } = usePage().props
+const page = usePage()
+const appUrl = computed(() => page.props.appUrl)
+console.log("La URL actual es:", appUrl.value)
 
 watch(search, (value) => {
     router.get(route('personas.index'), { search: value }, {
